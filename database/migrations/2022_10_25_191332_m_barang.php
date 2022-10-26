@@ -15,9 +15,10 @@ class MBarang extends Migration
     {
         Schema::create('m_barang', function (Blueprint $table) {
             $table->id();
-            $table->string('kode',10);
+            $table->string('kode',10)->unique();
             $table->string('nama', 100);
             $table->decimal('harga');
+            $table->integer('stok')->default(0);
             $table->timestamps();
         });
     }

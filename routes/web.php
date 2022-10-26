@@ -14,5 +14,5 @@
 */
 
 $router->get('/', function () use ($router) {
-    return $router->app->version();
+    return 'Dept. Prod BE Service - '.$router->app->version();
 });

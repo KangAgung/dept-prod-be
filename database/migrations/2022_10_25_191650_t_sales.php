@@ -15,7 +15,7 @@ class TSales extends Migration
     {
         Schema::create('t_sales', function (Blueprint $table) {
             $table->id();
-            $table->string('kode',15);
+            $table->string('kode',15)->unique();
             $table->dateTime('tgl');
             $table->foreignId('cust_id');
             $table->decimal('subtotal');
