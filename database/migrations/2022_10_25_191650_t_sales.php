@@ -22,6 +22,7 @@ class TSales extends Migration
             $table->decimal('diskon');
             $table->decimal('ongkir');
             $table->decimal('total_bayar');
+            $table->timestamps();
 
             $table->foreign('cust_id')->references('id')->on('m_customer');
         });

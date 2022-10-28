@@ -16,3 +16,8 @@
 $router->get('/', function () use ($router) {
     return 'Dept. Prod BE Service - '.$router->app->version();
 });
+
+$router->group(['prefix' => 'sales'], function () use ($router){
+    $router->get('/', 'SalesController@index');
+    $router->post('/', 'SalesController@store');
+});
