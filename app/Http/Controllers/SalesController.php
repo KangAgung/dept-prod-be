@@ -36,6 +36,7 @@ class SalesController extends Controller
     public function store(Request $request)
     {
         try {
+            $jumlah_barang = 0;
             $data = new Sales;
             $data->kode = $request->input('kode');
             $data->tgl = $request->input('tgl');
@@ -43,6 +44,12 @@ class SalesController extends Controller
             $data->diskon = $request->input('diskon');
             $data->ongkir = $request->input('ongkir');
             $data->total_bayar = $request->input('total_bayar');
+
+            foreach ($request->input('barang') as $value){
+                $jumlah_barang = $jumlah_barang + $value['qty'];
+            }
+
+            $data->jumlah_barang = $jumlah_barang;
 
             $cust = Customer::findOrFail($request->input('cust_id'));
             $cust->sales()->save($data);

@@ -21,3 +21,11 @@ $router->group(['prefix' => 'sales'], function () use ($router){
     $router->get('/', 'SalesController@index');
     $router->post('/', 'SalesController@store');
 });
+
+$router->group(['prefix' => 'barang'], function () use ($router){
+    $router->get('/', 'BarangController@index');
+});
+
+$router->group(['prefix' => 'customer'], function () use ($router){
+    $router->get('/', 'CustomerController@index');
+});
