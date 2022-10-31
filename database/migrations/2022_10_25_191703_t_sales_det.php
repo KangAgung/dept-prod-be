@@ -16,12 +16,12 @@ class TSalesDet extends Migration
         Schema::create('t_sales_det', function (Blueprint $table) {
             $table->foreignId('sales_id');
             $table->foreignId('barang_id');
-            $table->decimal('harga_bandrol');
+            $table->decimal('harga_bandrol',16,2,true);
             $table->integer('qty');
             $table->decimal('diskon_pct');
-            $table->decimal('diskon_nilai');
-            $table->decimal('harga_diskon');
-            $table->decimal('total');
+            $table->decimal('diskon_nilai',16,2,true);
+            $table->decimal('harga_diskon',16,2,true);
+            $table->decimal('total',16,2,true);
 
             $table->foreign('sales_id')->references('id')->on('t_sales');
             $table->foreign('barang_id')->references('id')->on('m_barang');

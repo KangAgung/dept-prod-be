@@ -18,10 +18,10 @@ class TSales extends Migration
             $table->string('kode',15)->unique();
             $table->dateTime('tgl');
             $table->foreignId('cust_id');
-            $table->decimal('subtotal');
-            $table->decimal('diskon');
-            $table->decimal('ongkir');
-            $table->decimal('total_bayar');
+            $table->decimal('subtotal',16,2,true);
+            $table->decimal('diskon',16,2,true);
+            $table->decimal('ongkir',16,2,true);
+            $table->decimal('total_bayar',16,2,true);
             $table->integer('jumlah_barang');
             $table->timestamps();
 

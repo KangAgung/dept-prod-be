@@ -17,7 +17,7 @@ class MBarang extends Migration
             $table->id();
             $table->string('kode',10)->unique();
             $table->string('nama', 100);
-            $table->decimal('harga');
+            $table->decimal('harga',16,2,true);
             $table->integer('stok')->default(0);
             $table->timestamps();
         });
