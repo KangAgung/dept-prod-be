@@ -58,13 +58,15 @@ class SalesController extends Controller
             $barang = array();
 
             foreach ($request->input('barang') as $value){
+                $harga = floatVal($value['harga']);
+                $diskon = $value['harga'] * $value['diskon_pct'] / 100;
                 $dataBarang = [
-                    'harga_bandrol' => $value['harga_bandrol'],
+                    'harga_bandrol' => $harga,
                     'qty' => $value['qty'],
                     'diskon_pct' => $value['diskon_pct'],
-                    'diskon_nilai' => $value['diskon_nilai'],
-                    'harga_diskon' => $value['harga_diskon'],
-                    'total' => $value['total'],
+                    'diskon_nilai' => $diskon,
+                    'harga_diskon' => $harga - $diskon,
+                    'total' => ($harga - $diskon) * $value['qty'],
                 ];
                 $sales->barang()->attach($value['barang_id'], $dataBarang);
                 $dataBarang = array_merge($dataBarang,['barang_id' => $value['barang_id']]);

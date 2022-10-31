@@ -14,7 +14,7 @@ class Sales extends Model
      * @var array
      */
     protected $fillable = [
-        'tgl','subtotal','diskon', 'ongkir', 'total_bayar'
+        'tgl','subtotal','diskon', 'ongkir', 'total_bayar', 'jumlah_barang'
     ];
 
     public function barang()
