@@ -21,7 +21,7 @@ class SalesController extends Controller
 
             $data = Sales::with('barang')
                 ->join('m_customer','m_customer.id','=','t_sales.cust_id')
-                ->where('m_customer.name', 'like','%'.strtolower($search).'%')
+                ->where('m_customer.name', 'like','%'.$search.'%')
                 ->orderBy($sortBy,$sort)
                 ->paginate($perPage,['t_sales.*','m_customer.name']);
 
@@ -68,10 +68,10 @@ class SalesController extends Controller
                     'harga_diskon' => $harga - $diskon,
                     'total' => ($harga - $diskon) * $value['qty'],
                 ];
-                $sales->barang()->attach($value['barang_id'], $dataBarang);
-                $dataBarang = array_merge($dataBarang,['barang_id' => $value['barang_id']]);
+                $sales->barang()->attach($value['id'], $dataBarang);
+                $dataBarang = array_merge($dataBarang,['barang_id' => $value['id']]);
 
-                $item = Barang::findOrFail($value['barang_id']);
+                $item = Barang::findOrFail($value['id']);
                 $item->stok = $item->stok - $value['qty'];
                 $item->save();
 
